@@ -1,5 +1,11 @@
 <?php
 /**
+ * @file
+ * Code for the Open Berkeley Admin feature.
+ */
+
+include_once 'openberkeley_admin.features.inc';
+/**
  * Implements hook_menu().
  */
 function openberkeley_admin_menu() {
