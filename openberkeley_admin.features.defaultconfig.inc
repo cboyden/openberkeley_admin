@@ -385,7 +385,6 @@ function openberkeley_admin_defaultconfig_strongarm() {
     5 => '5',
     6 => '6',
     3 => '3',
-    2 => 2,
   );
   $export['total_control_role_pages'] = $strongarm;
 
@@ -398,7 +397,6 @@ function openberkeley_admin_defaultconfig_strongarm() {
     5 => '5',
     6 => '6',
     3 => '3',
-    2 => 2,
   );
   $export['total_control_role_panels'] = $strongarm;
 
