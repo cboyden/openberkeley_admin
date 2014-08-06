@@ -30,22 +30,24 @@ function openberkeley_admin_views_api($module = NULL, $api = NULL) {
  */
 /**/
 function openberkeley_admin_views_default_views_alter(&$views) {
-  $handler =& $views['control_users']->display['page_1']->handler;
-  $handler->default_display->display->display_options['fields']['login']['custom_date_format'] = 'm/d g:ia';
-  $handler->default_display->display->display_options['fields']['views_bulk_operations']['vbo_operations']['action::views_bulk_operations_user_roles_action']['selected'] = 1;
-  $handler->default_display->display->display_options['fields']['views_bulk_operations']['vbo_operations']['action::panelizer_set_status_action'] = array(
-    'selected' => 0,
-    'postpone_processing' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-  );
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations']['action::pathauto_user_update_action'] = array(
-    'selected' => 0,
-    'postpone_processing' => 0,
-    'skip_confirmation' => 0,
-    'override_label' => 0,
-    'label' => '',
-  );
+  if (array_key_exists('control_users', $views)) {
+    $handler =& $views['control_users']->display['page_1']->handler;
+    $handler->default_display->display->display_options['fields']['login']['custom_date_format'] = 'm/d g:ia';
+    $handler->default_display->display->display_options['fields']['views_bulk_operations']['vbo_operations']['action::views_bulk_operations_user_roles_action']['selected'] = 1;
+    $handler->default_display->display->display_options['fields']['views_bulk_operations']['vbo_operations']['action::panelizer_set_status_action'] = array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    );
+    $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations']['action::pathauto_user_update_action'] = array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    );
+  }
 }
 
