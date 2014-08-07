@@ -5,6 +5,7 @@ package = Open Berkeley
 version = 7.x-0.1-dev
 project = openberkeley_admin
 dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
 dependencies[] = ctools
 dependencies[] = defaultconfig
 dependencies[] = diff
