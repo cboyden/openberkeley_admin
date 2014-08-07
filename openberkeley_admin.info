@@ -43,4 +43,6 @@ features[user_permission][] = administer total control
 features[user_permission][] = have total control
 features[uuid_fpp][] = b78d8676-ac06-bc74-fdb1-f54ade38c77f
 features[uuid_fpp][] = f46f3dc1-1d9d-eed4-bd10-769e29823d74
-features_exclude[menu_links][management_total-control-dashboard:admin/config/administration/control] = management_total-control-dashboard:admin/config/administration/control
+features[variable][] = admin_menu_cache_client
+features[variable][] = admin_menu_position_fixed
+
