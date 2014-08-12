@@ -34,3 +34,4 @@ features[user_permission][] = flush caches
 features[user_permission][] = have total control
 features[variable][] = admin_menu_cache_client
 features[variable][] = admin_menu_position_fixed
+features[variable][] = redirect_auto_redirect
