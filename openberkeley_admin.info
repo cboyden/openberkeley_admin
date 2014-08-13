@@ -42,3 +42,4 @@ features[user_permission][] = see contextual messages
 features[variable][] = admin_menu_cache_client
 features[variable][] = admin_menu_position_fixed
 features_exclude[menu_links][management_link-checker:admin/config/content/linkchecker] = management_link-checker:admin/config/content/linkchecker
+features[variable][] = redirect_auto_redirect

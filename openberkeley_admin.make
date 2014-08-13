@@ -17,6 +17,14 @@ projects[linkchecker][patch][1886890] = "https://www.drupal.org/files/linkchecke
 ;projects[navigation404][version] =
 ;projects[navigation404][subdir] = contrib
 
+projects[redirect][version] = 1.x-dev
+projects[redirect][subdir] = contrib
+projects[redirect][download][type] = git
+projects[redirect][download][revision] = 6957f39
+projects[redirect][download][branch] = 7.x-1.x
+projects[redirect][patch][1796596] = https://www.drupal.org/files/redirect-detect_prevent_circular_redirects_patch_and_test-1796596-48.patch
+
+
 projects[total_control][version] = 2.4
 projects[total_control][subdir] = contrib
 
