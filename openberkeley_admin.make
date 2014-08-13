@@ -17,9 +17,6 @@ projects[linkchecker][patch][1886890] = "https://www.drupal.org/files/linkchecke
 projects[navigation404][version] = 1.0
 projects[navigation404][subdir] = contrib
 
-;projects[navigation404][version] =
-;projects[navigation404][subdir] = contrib
-
 projects[redirect][version] = 1.x-dev
 projects[redirect][subdir] = contrib
 projects[redirect][download][type] = git
