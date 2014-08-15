@@ -18,7 +18,6 @@ function openberkeley_admin_menu() {
     'position' => 'left',
     'weight' => -20,
     'page callback' => 'system_admin_menu_block_page',
-    'access callback' => TRUE,
     'access arguments' => array('access administration pages'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
@@ -36,14 +35,27 @@ function openberkeley_admin_menu_alter(&$items) {
     'type' => MENU_LOCAL_TASK,
     'description' => 'Configure Open Berkeley settings.',
     'position' => 'left',
-//    'weight' => -20,
     'page callback' => 'openberkeley_admin_openberkeley_settings_page',
-    'access callback' => TRUE,
-//    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer openberkeley settings'),
     'file' => 'openberkeley_admin.admin.inc',
     'file path' => drupal_get_path('module', 'openberkeley_admin'),
   );
 }
+
+/**
+ * Implements hook_permission().
+ *
+ * Adds permissions for access to Open Berkeley administration functionality
+ */
+function openberkeley_admin_permission() {
+  return array(
+    'administer openberkeley settings' => array(
+      'title' => t('Administer Open Berkeley Settings'),
+      'description' => t('See the Open Berkeley tab on the Total Control dashboard.'),
+    ),
+  );
+}
+
 /**
  * Implementation of hook_form_alter
  *
