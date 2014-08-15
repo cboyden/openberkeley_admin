@@ -28,6 +28,23 @@ function openberkeley_admin_menu() {
 }
 
 /**
+ * Implements hook_menu_alter()
+ */
+function openberkeley_admin_menu_alter(&$items) {
+  $items['admin/dashboard/openberkeley'] = array(
+    'title' => 'Open Berkeley',
+    'type' => MENU_LOCAL_TASK,
+    'description' => 'Configure Open Berkeley settings.',
+    'position' => 'left',
+//    'weight' => -20,
+    'page callback' => 'openberkeley_admin_openberkeley_settings_page',
+    'access callback' => TRUE,
+//    'access arguments' => array('access administration pages'),
+    'file' => 'openberkeley_admin.admin.inc',
+    'file path' => drupal_get_path('module', 'openberkeley_admin'),
+  );
+}
+/**
  * Implementation of hook_form_alter
  *
  */
