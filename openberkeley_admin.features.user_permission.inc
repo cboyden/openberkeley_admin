@@ -54,6 +54,26 @@ function openberkeley_admin_user_default_permissions() {
     'module' => 'linkchecker',
   );
 
+  // Exported permission: 'administer openberkeley settings'.
+  $permissions['administer openberkeley settings'] = array(
+    'name' => 'administer openberkeley settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'builder' => 'builder',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'administer spotlight settings'.
+  $permissions['administer spotlight settings'] = array(
+    'name' => 'administer spotlight settings',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'builder' => 'builder',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
   // Exported permission: 'administer total control'.
   $permissions['administer total control'] = array(
     'name' => 'administer total control',

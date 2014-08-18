@@ -18,13 +18,49 @@ function openberkeley_admin_menu() {
     'position' => 'left',
     'weight' => -20,
     'page callback' => 'system_admin_menu_block_page',
-    'access callback' => TRUE,
     'access arguments' => array('access administration pages'),
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
+  $items['admin/config/openberkeley/spotlight'] = array(
+    'title' => 'Spotlight Settings',
+    'description' => 'Configure Spotlight settings.',
+    'position' => 'left',
+    'weight' => 0,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('panopoly_widgets_configure_form'),
+    'access arguments' => array('administer spotlight settings'),
+  );
+  $items['admin/dashboard/openberkeley'] = array(
+    'title' => 'Open Berkeley',
+    'type' => MENU_LOCAL_TASK,
+    'description' => 'Configure Open Berkeley settings.',
+    'position' => 'left',
+    'page callback' => 'openberkeley_admin_openberkeley_settings_page',
+    'access arguments' => array('administer openberkeley settings'),
+    'file' => 'openberkeley_admin.admin.inc',
+    'file path' => drupal_get_path('module', 'openberkeley_admin'),
+  );
 
   return $items;
+}
+
+/**
+ * Implements hook_permission().
+ *
+ * Adds permissions for access to Open Berkeley administration functionality
+ */
+function openberkeley_admin_permission() {
+  return array(
+    'administer openberkeley settings' => array(
+      'title' => t('Administer Open Berkeley Settings'),
+      'description' => t('See the Open Berkeley tab on the Total Control dashboard.'),
+    ),
+    'administer spotlight settings' => array(
+      'title' => t('Administer Spotlight Settings'),
+      'description' => t('See the Spotlight link under the Open Berkeley tab on the Total Control dashboard.'),
+    ),
+  );
 }
 
 /**
@@ -57,6 +93,10 @@ function openberkeley_admin_form_alter(&$form, &$form_state, $form_id) {
           unset($form['remove_roles']['#options'][$k]);
         }
       }
+      break;
+    case "panopoly_widgets_configure_form":
+      $form['panopoly_widgets_spotlight_rotation_time']['#default_value'] = 5;
+      $form['panopoly_widgets_spotlight_pause_play_buttons']['#access'] = FALSE;
       break;
   }
 }
