@@ -22,6 +22,25 @@ function openberkeley_admin_user_default_permissions() {
     'module' => 'admin_menu',
   );
 
+  // Exported permission: 'access backup and migrate'.
+  $permissions['access backup and migrate'] = array(
+    'name' => 'access backup and migrate',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'builder' => 'builder',
+    ),
+    'module' => 'backup_migrate',
+  );
+
+  // Exported permission: 'access backup files'.
+  $permissions['access backup files'] = array(
+    'name' => 'access backup files',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'backup_migrate',
+  );
+
   // Exported permission: 'access broken links report'.
   $permissions['access broken links report'] = array(
     'name' => 'access broken links report',
@@ -135,6 +154,15 @@ function openberkeley_admin_user_default_permissions() {
     'module' => 'linkchecker',
   );
 
+  // Exported permission: 'administer backup and migrate'.
+  $permissions['administer backup and migrate'] = array(
+    'name' => 'administer backup and migrate',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'backup_migrate',
+  );
+
   // Exported permission: 'administer linkchecker'.
   $permissions['administer linkchecker'] = array(
     'name' => 'administer linkchecker',
@@ -171,6 +199,15 @@ function openberkeley_admin_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'total_control',
+  );
+
+  // Exported permission: 'delete backup files'.
+  $permissions['delete backup files'] = array(
+    'name' => 'delete backup files',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'backup_migrate',
   );
 
   // Exported permission: 'display drupal links'.
@@ -210,6 +247,26 @@ function openberkeley_admin_user_default_permissions() {
       'builder' => 'builder',
     ),
     'module' => 'total_control',
+  );
+
+  // Exported permission: 'perform backup'.
+  $permissions['perform backup'] = array(
+    'name' => 'perform backup',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'builder' => 'builder',
+    ),
+    'module' => 'backup_migrate',
+  );
+
+  // Exported permission: 'restore from backup'.
+  $permissions['restore from backup'] = array(
+    'name' => 'restore from backup',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'builder' => 'builder',
+    ),
+    'module' => 'backup_migrate',
   );
 
   // Exported permission: 'see contextual messages'.
