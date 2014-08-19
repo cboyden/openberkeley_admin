@@ -33,6 +33,96 @@ function openberkeley_admin_user_default_permissions() {
     'module' => 'linkchecker',
   );
 
+  // Exported permission: 'access dashboard administer menus'.
+  $permissions['access dashboard administer menus'] = array(
+    'name' => 'access dashboard administer menus',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard administer taxonomy'.
+  $permissions['access dashboard administer taxonomy'] = array(
+    'name' => 'access dashboard administer taxonomy',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard backups'.
+  $permissions['access dashboard backups'] = array(
+    'name' => 'access dashboard backups',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard content overview'.
+  $permissions['access dashboard content overview'] = array(
+    'name' => 'access dashboard content overview',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard create content'.
+  $permissions['access dashboard create content'] = array(
+    'name' => 'access dashboard create content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard new content'.
+  $permissions['access dashboard new content'] = array(
+    'name' => 'access dashboard new content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard new user accounts'.
+  $permissions['access dashboard new user accounts'] = array(
+    'name' => 'access dashboard new user accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard other administration'.
+  $permissions['access dashboard other administration'] = array(
+    'name' => 'access dashboard other administration',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard unpublished content'.
+  $permissions['access dashboard unpublished content'] = array(
+    'name' => 'access dashboard unpublished content',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
+  // Exported permission: 'access dashboard url administration'.
+  $permissions['access dashboard url administration'] = array(
+    'name' => 'access dashboard url administration',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
   // Exported permission: 'access own broken links report'.
   $permissions['access own broken links report'] = array(
     'name' => 'access own broken links report',
