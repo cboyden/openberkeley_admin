@@ -87,7 +87,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'create';
   $pane->subtype = 'create';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard create content',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'types' => array(
       'article' => 'article',
@@ -114,7 +125,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'overview_content';
   $pane->subtype = 'overview_content';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard content overview',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'types' => array(
       'article' => 'article',
@@ -147,7 +169,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'views_panes';
   $pane->subtype = 'control_users_panes-pane_tc_new_users';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard new user accounts',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'items_per_page' => '10',
   );
@@ -168,7 +201,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'views_panes';
   $pane->subtype = 'control_content_panes-pane_tc_new';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard new content',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'items_per_page' => '10',
   );
@@ -189,7 +233,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'menus';
   $pane->subtype = 'menus';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard administer menus',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'item1' => NULL,
     'item2' => NULL,
@@ -251,7 +306,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'taxonomy';
   $pane->subtype = 'taxonomy';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard administer taxonomy',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'vids' => array(
       0 => '4',
@@ -302,7 +368,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'block';
   $pane->subtype = 'openberkeley_admin-url_administration';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard url administration',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',
@@ -324,7 +401,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'block';
   $pane->subtype = 'openberkeley_admin-other_administration';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard other administration',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',
@@ -346,7 +434,18 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->type = 'views_panes';
   $pane->subtype = 'control_content_panes-pane_tc_unpub';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard unpublished content',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'items_per_page' => '10',
     'override_title' => 0,
@@ -365,6 +464,39 @@ function openberkeley_admin_default_page_manager_pages() {
   $pane->uuid = '884a3a68-05da-4892-b912-3580de3d00a0';
   $display->content['new-884a3a68-05da-4892-b912-3580de3d00a0'] = $pane;
   $display->panels['right'][6] = 'new-884a3a68-05da-4892-b912-3580de3d00a0';
+  $pane = new stdClass();
+  $pane->pid = 'new-09b791ac-8b68-49af-b702-abd11c555108';
+  $pane->panel = 'right';
+  $pane->type = 'fieldable_panels_pane';
+  $pane->subtype = 'fpid:1';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'logic' => 'and',
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard backups',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'view_mode' => 'full',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 7;
+  $pane->locks = array();
+  $pane->uuid = '09b791ac-8b68-49af-b702-abd11c555108';
+  $display->content['new-09b791ac-8b68-49af-b702-abd11c555108'] = $pane;
+  $display->panels['right'][7] = 'new-09b791ac-8b68-49af-b702-abd11c555108';
   $pane = new stdClass();
   $pane->pid = 'new-16d4c71a-52f3-4130-8d4f-aed01fbcedc2';
   $pane->panel = 'top';

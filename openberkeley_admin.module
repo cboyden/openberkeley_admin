@@ -60,6 +60,47 @@ function openberkeley_admin_permission() {
       'title' => t('Administer Spotlight Settings'),
       'description' => t('See the Spotlight link under the Open Berkeley tab on the Total Control dashboard.'),
     ),
+    'access dashboard create content' => array(
+      'title' => t('Access Dashboard Create Content pane'),
+      'description' => t('See the Create Content pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard content overview' => array(
+      'title' => t('Access dashboard Content Overview pane'),
+      'description' => t('See the Content Overview pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard new user accounts' => array(
+      'title' => t('Access dashboard New User Accounts pane'),
+      'description' => t('See the New User Accounts pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard new content' => array(
+      'title' => t('Access dashboard New Content pane'),
+      'description' => t('See the New Content pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard unpublished content' => array(
+      'title' => t('Access dashboard Unpublished Content pane'),
+      'description' => t('See the Unpublished Content pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard administer menus' => array(
+      'title' => t('Access dashboard Administer Menus pane'),
+      'description' => t('See the Administer Menus pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard administer taxonomy' => array(
+      'title' => t('Access dashboard Administer Taxonomy pane'),
+      'description' => t('See the Administer Taxonomy pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard url administration' => array(
+      'title' => t('Access dashboard URL Administration pane'),
+      'description' => t('See the URL Administration pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard other administration' => array(
+      'title' => t('Access dashboard Other Administration pane'),
+      'description' => t('See the Other Administration pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard backups' => array(
+      'title' => t('Access dashboard Backups pane'),
+      'description' => t('See the Backups pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+
   );
 }
 
