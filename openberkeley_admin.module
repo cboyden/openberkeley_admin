@@ -109,6 +109,7 @@ function openberkeley_admin_permission() {
  *
  */
 function openberkeley_admin_form_alter(&$form, &$form_state, $form_id) {
+  $pantheon_description = "<em>Backups for Pantheon-hosted sites must be downloaded, they cannot be saved to the server.</em>";
   switch ($form_id) {
     case "views_form_control_users_page_1":
       if (!isset($form['add_roles']) || (!isset($form['remove_roles']))) {
@@ -138,6 +139,28 @@ function openberkeley_admin_form_alter(&$form, &$form_state, $form_id) {
     case "panopoly_widgets_configure_form":
       $form['panopoly_widgets_spotlight_rotation_time']['#default_value'] = 5;
       $form['panopoly_widgets_spotlight_pause_play_buttons']['#access'] = FALSE;
+      break;
+    case "backup_migrate_ui_manual_quick_backup_form":
+      //TODO: write test for this alter
+      if (array_key_exists('PANTHEON_SITE_NAME', $_ENV)) {
+        // Prevent saving backups to Pantheon servers
+        $form['quickbackup']['destination_id']['#options'] = array('download' => 'Download');
+        $form['quickbackup']['pantheon'] = array(
+          '#type' => 'markup',
+          '#markup' => $pantheon_description,
+        );
+      }
+      break;
+    case "backup_migrate_ui_manual_backup_form":
+      //TODO: write test for this alter
+      if (array_key_exists('PANTHEON_SITE_NAME', $_ENV)) {
+        // Prevent saving backups to Pantheon servers
+        $form['destination']['destination_id']['#options'] = array('download' => 'Download');
+        $form['destination']['pantheon'] = array(
+          '#type' => 'markup',
+          '#markup' => $pantheon_description,
+        );
+      }
       break;
   }
 }
@@ -199,9 +222,9 @@ function openberkeley_admin_block_other_administration_content() {
   }
   foreach ($blocks_footer as $bf) {
     foreach ($bf as $bf_block) {
-    $delta = $bf_block->delta;
-    $subject = $bf_block->subject;
-    $content .= '<li>' . l("Edit Footer: $subject", "admin/structure/block/manage/block/$delta/configure?destination=admin/dashboard") . '</li>';
+      $delta = $bf_block->delta;
+      $subject = $bf_block->subject;
+      $content .= '<li>' . l("Edit Footer: $subject", "admin/structure/block/manage/block/$delta/configure?destination=admin/dashboard") . '</li>';
     }
   }
   $content .= '</ul>';
