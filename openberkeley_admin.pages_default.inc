@@ -164,38 +164,6 @@ function openberkeley_admin_default_page_manager_pages() {
   $display->content['new-18263b21-be97-4de2-872a-fa9682b3e524'] = $pane;
   $display->panels['left'][1] = 'new-18263b21-be97-4de2-872a-fa9682b3e524';
   $pane = new stdClass();
-  $pane->pid = 'new-fcf2d600-7fc2-4119-bf69-e1c6518d0be8';
-  $pane->panel = 'left';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'control_users_panes-pane_tc_new_users';
-  $pane->shown = TRUE;
-  $pane->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'access dashboard new user accounts',
-        ),
-        'context' => 'logged-in-user',
-        'not' => FALSE,
-      ),
-    ),
-  );
-  $pane->configuration = array(
-    'items_per_page' => '10',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 2;
-  $pane->locks = array();
-  $pane->uuid = 'fcf2d600-7fc2-4119-bf69-e1c6518d0be8';
-  $display->content['new-fcf2d600-7fc2-4119-bf69-e1c6518d0be8'] = $pane;
-  $display->panels['left'][2] = 'new-fcf2d600-7fc2-4119-bf69-e1c6518d0be8';
-  $pane = new stdClass();
   $pane->pid = 'new-85997bed-3d0f-4c6e-be78-1eb86fc64618';
   $pane->panel = 'left';
   $pane->type = 'views_panes';
@@ -222,11 +190,79 @@ function openberkeley_admin_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 2;
   $pane->locks = '';
   $pane->uuid = '85997bed-3d0f-4c6e-be78-1eb86fc64618';
   $display->content['new-85997bed-3d0f-4c6e-be78-1eb86fc64618'] = $pane;
-  $display->panels['left'][3] = 'new-85997bed-3d0f-4c6e-be78-1eb86fc64618';
+  $display->panels['left'][2] = 'new-85997bed-3d0f-4c6e-be78-1eb86fc64618';
+  $pane = new stdClass();
+  $pane->pid = 'new-884a3a68-05da-4892-b912-3580de3d00a0';
+  $pane->panel = 'left';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'control_content_panes-pane_tc_unpub';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard unpublished content',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'items_per_page' => '10',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'view_mode' => NULL,
+    'widget_title' => 'Unpublished content',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = '884a3a68-05da-4892-b912-3580de3d00a0';
+  $display->content['new-884a3a68-05da-4892-b912-3580de3d00a0'] = $pane;
+  $display->panels['left'][3] = 'new-884a3a68-05da-4892-b912-3580de3d00a0';
+  $pane = new stdClass();
+  $pane->pid = 'new-fcf2d600-7fc2-4119-bf69-e1c6518d0be8';
+  $pane->panel = 'left';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'control_users_panes-pane_tc_new_users';
+  $pane->shown = TRUE;
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard new user accounts',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'items_per_page' => '10',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 4;
+  $pane->locks = array();
+  $pane->uuid = 'fcf2d600-7fc2-4119-bf69-e1c6518d0be8';
+  $display->content['new-fcf2d600-7fc2-4119-bf69-e1c6518d0be8'] = $pane;
+  $display->panels['left'][4] = 'new-fcf2d600-7fc2-4119-bf69-e1c6518d0be8';
   $pane = new stdClass();
   $pane->pid = 'new-a76901d1-8d37-42b8-9033-6eaa893a2da6';
   $pane->panel = 'right';
@@ -429,49 +465,12 @@ function openberkeley_admin_default_page_manager_pages() {
   $display->content['new-b912d98c-6724-4288-8c7e-d52cd321bcc4'] = $pane;
   $display->panels['right'][5] = 'new-b912d98c-6724-4288-8c7e-d52cd321bcc4';
   $pane = new stdClass();
-  $pane->pid = 'new-884a3a68-05da-4892-b912-3580de3d00a0';
+  $pane->pid = 'new-d690fa6f-f10a-47e5-9855-48b8a88611e2';
   $pane->panel = 'right';
-  $pane->type = 'views_panes';
-  $pane->subtype = 'control_content_panes-pane_tc_unpub';
+  $pane->type = 'block';
+  $pane->subtype = 'openberkeley_admin-backups';
   $pane->shown = TRUE;
   $pane->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'perm',
-        'settings' => array(
-          'perm' => 'access dashboard unpublished content',
-        ),
-        'context' => 'logged-in-user',
-        'not' => FALSE,
-      ),
-    ),
-  );
-  $pane->configuration = array(
-    'items_per_page' => '10',
-    'override_title' => 0,
-    'override_title_text' => '',
-    'view_mode' => NULL,
-    'widget_title' => 'Unpublished content',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 6;
-  $pane->locks = array();
-  $pane->uuid = '884a3a68-05da-4892-b912-3580de3d00a0';
-  $display->content['new-884a3a68-05da-4892-b912-3580de3d00a0'] = $pane;
-  $display->panels['right'][6] = 'new-884a3a68-05da-4892-b912-3580de3d00a0';
-  $pane = new stdClass();
-  $pane->pid = 'new-09b791ac-8b68-49af-b702-abd11c555108';
-  $pane->panel = 'right';
-  $pane->type = 'fieldable_panels_pane';
-  $pane->subtype = 'fpid:1';
-  $pane->shown = TRUE;
-  $pane->access = array(
-    'logic' => 'and',
     'plugins' => array(
       0 => array(
         'name' => 'perm',
@@ -484,7 +483,8 @@ function openberkeley_admin_default_page_manager_pages() {
     ),
   );
   $pane->configuration = array(
-    'view_mode' => 'full',
+    'override_title' => 1,
+    'override_title_text' => 'Administer Backups',
   );
   $pane->cache = array();
   $pane->style = array(
@@ -492,11 +492,11 @@ function openberkeley_admin_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 7;
+  $pane->position = 6;
   $pane->locks = array();
-  $pane->uuid = '09b791ac-8b68-49af-b702-abd11c555108';
-  $display->content['new-09b791ac-8b68-49af-b702-abd11c555108'] = $pane;
-  $display->panels['right'][7] = 'new-09b791ac-8b68-49af-b702-abd11c555108';
+  $pane->uuid = 'd690fa6f-f10a-47e5-9855-48b8a88611e2';
+  $display->content['new-d690fa6f-f10a-47e5-9855-48b8a88611e2'] = $pane;
+  $display->panels['right'][6] = 'new-d690fa6f-f10a-47e5-9855-48b8a88611e2';
   $pane = new stdClass();
   $pane->pid = 'new-16d4c71a-52f3-4130-8d4f-aed01fbcedc2';
   $pane->panel = 'top';
