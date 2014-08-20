@@ -57,6 +57,7 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard administer menus',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -66,6 +67,8 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard administer taxonomy',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
+      'editor' => 'editor',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -75,6 +78,7 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard backups',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -84,6 +88,9 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard content overview',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -93,6 +100,9 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard create content',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -102,6 +112,9 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard new content',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -111,6 +124,8 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard new user accounts',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
+      'editor' => 'editor',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -120,6 +135,7 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard other administration',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -129,6 +145,7 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard unpublished content',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
     ),
     'module' => 'openberkeley_admin',
   );
@@ -138,6 +155,7 @@ function openberkeley_admin_user_default_permissions() {
     'name' => 'access dashboard url administration',
     'roles' => array(
       'administrator' => 'administrator',
+      'builder' => 'builder',
     ),
     'module' => 'openberkeley_admin',
   );

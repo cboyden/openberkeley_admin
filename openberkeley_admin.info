@@ -68,3 +68,4 @@ features[variable][] = admin_menu_cache_client
 features[variable][] = admin_menu_position_fixed
 features[variable][] = redirect_auto_redirect
 features_exclude[menu_links][management_link-checker:admin/config/content/linkchecker] = management_link-checker:admin/config/content/linkchecker
+features_exclude[dependencies][openberkeley_admin] = openberkeley_admin
