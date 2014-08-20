@@ -263,6 +263,8 @@ function openberkeley_admin_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'builder' => 'builder',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
     ),
     'module' => 'total_control',
   );
