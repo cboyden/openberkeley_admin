@@ -1,6 +1,5 @@
 # openberkeley_admin #
 
-
 Feature for capturing administrator configuration.
 
 # Provides #
@@ -26,4 +25,18 @@ provide administrator settings.
 * Form alter to prevent role escalation to Administrator at /admin/dashboard/users > Modify user roles
 * Fix date format in control_users view
 * Set Builder permissions
+* Provide custom permissions to specify the visibility of the panes at admin/dashboard
+* Add an Open Berkeley tab exposing links to Open Berkeley configuration
+* Add a pane providing links to Backup and Migrate
 
+## Link Checker ##
+
+## URL Redirects ##
+
+## Navigation 404 ##
+
+## Google Analytics ##
+
+## Backup and Migrate ##
+* Prevent users from saving backups to the server if Pantheon environment variables are present.
+* Set backup file name to use \[site:url-brief\] in the default profile.  This is useful for differentiating backups taken in different pantheon environments (dev/test/live).
