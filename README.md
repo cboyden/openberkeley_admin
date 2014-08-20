@@ -29,6 +29,52 @@ provide administrator settings.
 * Add an Open Berkeley tab exposing links to Open Berkeley configuration
 * Add a pane providing links to Backup and Migrate
 
+### Administer Taxonomy Pane ###
+By default this pane is configured to display administration links for each taxonomy vocabulary
+to which the user has access. Since an unknown number of vocabularies may exist on a site, this
+pane has been configured placeholders for 10 vocabularies:
+
+openberkeley_admin.pages_default.inc:
+```
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'access dashboard administer taxonomy',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+    ),
+  );
+  $pane->configuration = array(
+    'vids' => array(
+      1 => '1',
+      3 => '3',
+      2 => '2',
+      4 => '4',
+      5 => '5',
+      6 => '6',
+      7 => '7',
+      8 => '8',
+      9 => '9',
+      10 => '10'
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+  );
+```
+
+Should > 10 vocabularies be needed the best thing to do is to manually enable the new vocabularies at
+/admin/structure/pages/nojs/operation/page-dashboard/handlers/page_dashboard_panel_context/content.
+(Alternatively, the above file could be patched to enable more vocabularies.)
+
+(Note that disabling and enabling a vocabulary may increment its vid by 1.)
+
+If taxonomy permissions are modified caches should be cleared to ensure that this pane displays
+administration links for vocabularies to which the user has administrative access.
+
 ## Link Checker ##
 
 ## URL Redirects ##

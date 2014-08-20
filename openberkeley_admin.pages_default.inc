@@ -356,9 +356,16 @@ function openberkeley_admin_default_page_manager_pages() {
   );
   $pane->configuration = array(
     'vids' => array(
-      0 => '4',
-      1 => '3',
-      2 => '1',
+      1 => '1',
+      3 => '3',
+      2 => '2',
+      4 => '4',
+      5 => '5',
+      6 => '6',
+      7 => '7',
+      8 => '8',
+      9 => '9',
+      10 => '10'
     ),
     'override_title' => 0,
     'override_title_text' => '',
