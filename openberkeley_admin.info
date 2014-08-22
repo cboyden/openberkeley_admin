@@ -12,6 +12,7 @@ dependencies[] = backup_migrate
 dependencies[] = googleanalytics
 dependencies[] = linkchecker
 dependencies[] = menu
+dependencies[] = menu_item_visibility
 dependencies[] = navigation404
 dependencies[] = openberkeley_base
 dependencies[] = panopoly_core
