@@ -8,14 +8,39 @@ function openberkeley_admin_install() {
   $filters = 'a:9:{s:11:"compression";s:4:"gzip";s:21:"notify_success_enable";i:0;s:20:"notify_success_email";s:20:"example@berkeley.edu";s:21:"notify_failure_enable";i:0;s:20:"notify_failure_email";s:20:"example@berkeley.edu";s:18:"utils_site_offline";i:0;s:26:"utils_site_offline_message";s:109:"This UC Berkeley site is currently under maintenance. We should be back shortly. Thank you for your patience.";s:17:"utils_description";s:0:"";s:12:"destinations";a:1:{s:2:"db";a:4:{s:14:"exclude_tables";a:0:{}s:13:"nodata_tables";a:19:{s:5:"cache";s:5:"cache";s:16:"cache_admin_menu";s:16:"cache_admin_menu";s:11:"cache_block";s:11:"cache_block";s:15:"cache_bootstrap";s:15:"cache_bootstrap";s:11:"cache_field";s:11:"cache_field";s:12:"cache_filter";s:12:"cache_filter";s:10:"cache_form";s:10:"cache_form";s:11:"cache_image";s:11:"cache_image";s:10:"cache_menu";s:10:"cache_menu";s:10:"cache_page";s:10:"cache_page";s:10:"cache_path";s:10:"cache_path";s:12:"cache_update";s:12:"cache_update";s:11:"cache_views";s:11:"cache_views";s:16:"cache_views_data";s:16:"cache_views_data";s:14:"search_dataset";s:14:"search_dataset";s:12:"search_index";s:12:"search_index";s:12:"search_total";s:12:"search_total";s:8:"sessions";s:8:"sessions";s:8:"watchdog";s:8:"watchdog";}s:17:"utils_lock_tables";i:0;s:13:"use_mysqldump";i:0;}}}';
   db_insert('backup_migrate_profiles')
     ->fields(array(
-        'profile_id' => 'default',
-        'name' => 'Open Berkeley Settings',
-        'filename' => '[site:url-brief]',
-        'append_timestamp' => 1,
-        'timestamp_format' => 'Y-m-d\TH-i-s',
-        'filters' => $filters,
-      ))
+      'profile_id' => 'default',
+      'name' => 'Open Berkeley Settings',
+      'filename' => '[site:url-brief]',
+      'append_timestamp' => 1,
+      'timestamp_format' => 'Y-m-d\TH-i-s',
+      'filters' => $filters,
+    ))
     ->execute();
+
+  // Setup menu_item_visibility.module configuration
+  // Allow all roles outside of blacklisted roles to see these menu links.
+  // (If a site grants permission to these admin functions to roles outside
+  // of the blacklist, those roles should be allowed to see the menu links.)
+  $blacklist_rids = _openberkeley_admin_menu_links_visibility_roles_blacklist();
+  $all_rids = array_keys(user_roles());
+  $mlids = _openberkeley_admin_menu_links_visibility_menu_links();
+  $values = array();
+  foreach ($all_rids as $rid) {
+    if (in_array($rid, $blacklist_rids)) {
+      continue;
+    }
+    foreach ($mlids as $mlid) {
+      $values[] = array(
+        'mlid' => $mlid,
+        'rid' => $rid,
+      );
+    }
+  }
+  $query = db_insert('menu_links_visibility_role')->fields(array('mlid', 'rid'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
 }
 
 /**
@@ -40,5 +65,77 @@ function openberkeley_admin_uninstall() {
   db_delete('backup_migrate_profiles')
     ->condition('profile_id', 'default')
     ->execute();
+
+  // Clean up configuration for menu_item_visibility_module
+  // see openberkeley_admin_install()
+  $blacklist_rids = _openberkeley_admin_menu_links_visibility_roles_blacklist();
+  $all_rids = array_keys(user_roles());
+  $mlids = _openberkeley_admin_menu_links_visibility_menu_links();
+
+  foreach ($all_rids as $rid) {
+    if (in_array($rid, $blacklist_rids)) {
+      continue;
+    }
+    foreach ($mlids as $mlid) {
+      $query = db_delete('menu_links_visibility_role');
+      $query->condition('rid', $rid);
+      $query->condition('mlid', $mlid);
+      // execute in a loop rather than building complex AND/OR statement
+      $query->execute();
+    }
+  }
+  // Make sure the menus reflect removal of visibility restrictions.
+  menu_cache_clear('navigation');
+  menu_cache_clear('management');
+
 }
 
+/**
+ * Find menu link ids
+ * Function needs to be available on hook_uninstall, therefore this can't live
+ * in .module
+ * @param $path
+ * @param $menu_name
+ * @return mixed
+ */
+function _openberkeley_admin_get_mlid($path, $menu_name) {
+  $mlid = db_select('menu_links' , 'ml')
+    ->condition('ml.link_path' , $path)
+    ->condition('ml.menu_name',$menu_name)
+    ->fields('ml' , array('mlid'))
+    ->execute()
+    ->fetchField();
+  return $mlid;
+}
+
+/**
+ * Return the roles that should not have access to certain menu links
+ * Function needs to be available on hook_unnistall, therefore this can't live
+ * in .module
+ * @see openberkeley_admin_install()
+ * @see openberkeley_admin_uninistall()
+ * @return array
+ */
+function _openberkeley_admin_menu_links_visibility_roles_blacklist() {
+  $rids = array();
+  $roles = array('anonymous user', 'authenticated user', 'contributor', 'editor', 'builder');
+  foreach ($roles as $role) {
+    $rids[] = user_role_load_by_name($role)->rid;
+  }
+  return $rids;
+}
+
+/**
+ * Return the menu link ids for which visibility should be configured
+ * Function needs to be available on hook_uninstall, therefore this can't live
+ * in .module
+ * @see openberkeley_admin_install()
+ * @see openberkeley_admin_uninistall()
+ * @return array
+ */
+function _openberkeley_admin_menu_links_visibility_menu_links() {
+  $mlids = array();
+  $mlids[] = _openberkeley_admin_get_mlid('admin/content', 'management');
+  $mlids[] = _openberkeley_admin_get_mlid('node/add', 'navigation');
+  return $mlids;
+}
