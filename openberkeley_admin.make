@@ -17,9 +17,6 @@ projects[linkchecker][version] = 1.1
 projects[linkchecker][subdir] = contrib
 projects[linkchecker][patch][1886890] = "https://www.drupal.org/files/linkchecker-hide-messages-1886890-11.patch"
 
-projects[menu_item_visibility][version] = 1.0-beta1
-projects[menu_item_visibility][subdir] = contrib
-
 projects[navigation404][version] = 1.0
 projects[navigation404][subdir] = contrib
 

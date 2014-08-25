@@ -46,6 +46,24 @@ function openberkeley_admin_menu() {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function openberkeley_admin_menu_alter(&$items) {
+  $items['admin/content']['access callback'] = 'openberkeley_admin_menu_role_access';
+  $items['node/add']['access callback'] = 'openberkeley_admin_menu_role_access';
+}
+
+function openberkeley_admin_menu_role_access() {
+  global $user;
+  $blacklist_roles = array('contributor', 'editor', 'builder');
+  $user_roles = array_values($user->roles);
+  if (count(array_intersect($user_roles, $blacklist_roles))) {
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
  * Implements hook_permission().
  *
  * Adds permissions for access to Open Berkeley administration functionality
@@ -99,6 +117,18 @@ function openberkeley_admin_permission() {
     'access dashboard backups' => array(
       'title' => t('Access dashboard Backups pane'),
       'description' => t('See the Backups pane under the Dashbaord tab on the Total Control dashboard.'),
+    ),
+    'access dashboard content tab' => array(
+      'title' => t('Access dashboard Content tab'),
+      'description' => t('See the Content tab on the Total Control dashboard.'),
+    ),
+    'access dashboard categories tab' => array(
+      'title' => t('Access dashboard Categories tab'),
+      'description' => t('See the Categories tab on the Total Control dashboard.'),
+    ),
+    'access dashboard user accounts tab' => array(
+      'title' => t('Access dashboard User Accounts tab'),
+      'description' => t('See the User Accounts tab on the Total Control dashboard.'),
     ),
 
   );

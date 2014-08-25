@@ -16,31 +16,6 @@ function openberkeley_admin_install() {
       'filters' => $filters,
     ))
     ->execute();
-
-  // Setup menu_item_visibility.module configuration
-  // Allow all roles outside of blacklisted roles to see these menu links.
-  // (If a site grants permission to these admin functions to roles outside
-  // of the blacklist, those roles should be allowed to see the menu links.)
-  $blacklist_rids = _openberkeley_admin_menu_links_visibility_roles_blacklist();
-  $all_rids = array_keys(user_roles());
-  $mlids = _openberkeley_admin_menu_links_visibility_menu_links();
-  $values = array();
-  foreach ($all_rids as $rid) {
-    if (in_array($rid, $blacklist_rids)) {
-      continue;
-    }
-    foreach ($mlids as $mlid) {
-      $values[] = array(
-        'mlid' => $mlid,
-        'rid' => $rid,
-      );
-    }
-  }
-  $query = db_insert('menu_links_visibility_role')->fields(array('mlid', 'rid'));
-  foreach ($values as $record) {
-    $query->values($record);
-  }
-  $query->execute();
 }
 
 /**
@@ -48,12 +23,13 @@ function openberkeley_admin_install() {
  */
 function openberkeley_admin_enable() {
   /*
-   * If this feature is being enabled manually (not enabled by a .profile) we
-   * need to clear caches so that the Dashboard/Content/Categories/User Accounts
-   * tabs appear at /admin/dashboard after
-   * openberkeley_admin_views_default_views_alter() runs.
-   */
+ * If this feature is being enabled manually (not enabled by a .profile) we
+ * need to clear caches so that the Dashboard/Content/Categories/User Accounts
+ * tabs appear at /admin/dashboard after
+ * openberkeley_admin_views_default_views_alter() runs.
+ */
   drupal_flush_all_caches();
+
 }
 
 /**
@@ -65,77 +41,5 @@ function openberkeley_admin_uninstall() {
   db_delete('backup_migrate_profiles')
     ->condition('profile_id', 'default')
     ->execute();
-
-  // Clean up configuration for menu_item_visibility_module
-  // see openberkeley_admin_install()
-  $blacklist_rids = _openberkeley_admin_menu_links_visibility_roles_blacklist();
-  $all_rids = array_keys(user_roles());
-  $mlids = _openberkeley_admin_menu_links_visibility_menu_links();
-
-  foreach ($all_rids as $rid) {
-    if (in_array($rid, $blacklist_rids)) {
-      continue;
-    }
-    foreach ($mlids as $mlid) {
-      $query = db_delete('menu_links_visibility_role');
-      $query->condition('rid', $rid);
-      $query->condition('mlid', $mlid);
-      // execute in a loop rather than building complex AND/OR statement
-      $query->execute();
-    }
-  }
-  // Make sure the menus reflect removal of visibility restrictions.
-  menu_cache_clear('navigation');
-  menu_cache_clear('management');
-
 }
 
-/**
- * Find menu link ids
- * Function needs to be available on hook_uninstall, therefore this can't live
- * in .module
- * @param $path
- * @param $menu_name
- * @return mixed
- */
-function _openberkeley_admin_get_mlid($path, $menu_name) {
-  $mlid = db_select('menu_links' , 'ml')
-    ->condition('ml.link_path' , $path)
-    ->condition('ml.menu_name',$menu_name)
-    ->fields('ml' , array('mlid'))
-    ->execute()
-    ->fetchField();
-  return $mlid;
-}
-
-/**
- * Return the roles that should not have access to certain menu links
- * Function needs to be available on hook_unnistall, therefore this can't live
- * in .module
- * @see openberkeley_admin_install()
- * @see openberkeley_admin_uninistall()
- * @return array
- */
-function _openberkeley_admin_menu_links_visibility_roles_blacklist() {
-  $rids = array();
-  $roles = array('anonymous user', 'authenticated user', 'contributor', 'editor', 'builder');
-  foreach ($roles as $role) {
-    $rids[] = user_role_load_by_name($role)->rid;
-  }
-  return $rids;
-}
-
-/**
- * Return the menu link ids for which visibility should be configured
- * Function needs to be available on hook_uninstall, therefore this can't live
- * in .module
- * @see openberkeley_admin_install()
- * @see openberkeley_admin_uninistall()
- * @return array
- */
-function _openberkeley_admin_menu_links_visibility_menu_links() {
-  $mlids = array();
-  $mlids[] = _openberkeley_admin_get_mlid('admin/content', 'management');
-  $mlids[] = _openberkeley_admin_get_mlid('node/add', 'navigation');
-  return $mlids;
-}
