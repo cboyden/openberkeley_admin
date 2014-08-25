@@ -287,11 +287,16 @@ function openberkeley_admin_views_api($module = NULL, $api = NULL) {
 
 /**
  * Implements hook_views_default_views_alter()
+ * Total Control: control_users:
  * - change date format
  * - Add VBO user roles actions, pathauto and panelizer settings
+ *
+ * Admin Views: file_entity/admin_views_default
+ * - Create page display as admin/dashboard/files menu tab
  */
 
 function openberkeley_admin_views_default_views_alter(&$views) {
+  // Modify Total Control's control_users view
   if (array_key_exists('control_users', $views)) {
     $handler =& $views['control_users']->display['default']->handler;
     $handler->display->display_options['fields']['login']['custom_date_format'] = 'm/d g:ia';
@@ -369,6 +374,22 @@ function openberkeley_admin_views_default_views_alter(&$views) {
       ),
     );
   }
+
+
+  // Modify file_entity/admin_views_default's admin_views_file view
+  if (array_key_exists('admin_views_file', $views)) {
+    $view =& $views['admin_views_file'];
+    $handler =& $view->new_display('page', 'Page', 'page_1');
+    $handler->display->display_options['path'] = 'admin/dashboard/files';
+    $handler->display->display_options['menu']['type'] = 'tab';
+    $handler->display->display_options['menu']['title'] = 'Files';
+    $handler->display->display_options['menu']['description'] = 'Manage files';
+    $handler->display->display_options['menu']['weight'] = '0';
+    $handler->display->display_options['menu']['context'] = 0;
+    $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  }
+
 }
 
 
