@@ -129,6 +129,17 @@ function openberkeley_admin_user_default_permissions() {
     'module' => 'openberkeley_admin',
   );
 
+  // Exported permission: 'access dashboard files tab'.
+  $permissions['access dashboard files tab'] = array(
+    'name' => 'access dashboard files tab',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'builder' => 'builder',
+      'editor' => 'editor',
+    ),
+    'module' => 'openberkeley_admin',
+  );
+
   // Exported permission: 'access dashboard new content'.
   $permissions['access dashboard new content'] = array(
     'name' => 'access dashboard new content',
